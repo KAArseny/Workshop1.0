@@ -2,16 +2,12 @@
 # Импортируем библиотеку vk_api
 import vk_api
 import wikipedia
-import time
-import os
-import sys
 
 wikipedia.set_lang("RU")
 # Достаём из неё longpoll
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 # Создаём переменную для удобства в которой хранится наш токен от группы
-start_time = time.time()
 token = "f2cca1ade558b8d7bb39ef0b15771f226010d84f640436bb85c4b099b134eaef8ddc78f411420e06c5458"  # В ковычки вставляем аккуратно наш ранее взятый из группы токен.
 
 # Подключаем токен и longpoll
@@ -23,8 +19,10 @@ longpoll = VkLongPoll(bh)
 # Создадим функцию для ответа на сообщения в лс группы
 def blasthack(id, text):
     bh.method('messages.send', {'chat_id': id, 'message': text, 'random_id': 0})
+
 # Слушаем longpoll(Сообщения)
 for event in longpoll.listen():
+
     if event.type == VkEventType.MESSAGE_NEW and event.to_me:
         # Чтобы наш бот не слышал и не отвечал на самого себя
         if event.to_me:
@@ -58,11 +56,19 @@ for event in longpoll.listen():
                 continue
             elif event.text == 'Как дела?':
                 blasthack(id, "Жду Судного дня)))")
-    end_time = time.time()
-    time_taken = end_time - start_time
 
-    if time_taken > 30:
-        os.execv(sys.executable, ['python3'] + sys.argv)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
