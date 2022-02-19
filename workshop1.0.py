@@ -61,7 +61,7 @@ for event in longpoll.listen():
     end_time = time.time()
     time_taken = end_time - start_time
 
-    if time_taken > 10000:
+    if time_taken > 30:
         os.execv(sys.executable, ['python3'] + sys.argv)
 
 
