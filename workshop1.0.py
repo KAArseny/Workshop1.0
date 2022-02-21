@@ -1,4 +1,4 @@
-
+#! / usr / bin / env python3
 # Импортируем библиотеку vk_api
 import vk_api
 import wikipedia
